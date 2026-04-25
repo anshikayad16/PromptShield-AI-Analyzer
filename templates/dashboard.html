@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard-header">
+    <div class="stats-cards">
+        <div class="stat-card">
+            <h4>Total Safe Prompts</h4>
+            <div class="stat-value safe-color">{{ safe_count }}</div>
+        </div>
+        <div class="stat-card">
+            <h4>Total Blocked Prompts</h4>
+            <div class="stat-value error-color">{{ blocked_count }}</div>
+        </div>
+        <div class="stat-card chart-container">
+            <canvas id="statsChart"></canvas>
+        </div>
+    </div>
+</div>
+
+<div class="dashboard-grid">
+    <div class="prompt-section dashboard-panel">
+        <h3>AI Prompt Interface</h3>
+        <div class="prompt-box">
+            <textarea id="promptInput" rows="5" class="form-control" placeholder="Enter your prompt for the AI..."></textarea>
+            <button id="submitPromptBtn" class="btn btn-primary btn-block">Analyze & Send</button>
+        </div>
+        
+        <div id="resultBox" class="result-box hidden">
+            <h4>Detection Result: <span id="statusBadge" class="badge"></span></h4>
+            <div id="aiResponse" class="ai-response"></div>
+            <div id="layerTriggered" class="layer-triggered"></div>
+        </div>
+    </div>
+    
+    <div class="logs-section dashboard-panel">
+        <div class="logs-header">
+            <h3>Recent Analysis Logs</h3>
+            <span class="refresh-badge">Live Updates</span>
+        </div>
+        <div class="table-responsive">
+            <table class="logs-table">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Prompt Snippet</th>
+                        <th>Status</th>
+                        <th>Layer</th>
+                    </tr>
+                </thead>
+                <tbody id="logsTableBody">
+                    {% for log in logs %}
+                    <tr class="log-row">
+                        <td class="log-time">{{ log.timestamp.split(' ')[1] }}</td>
+                        <td class="log-prompt" title="{{ log.prompt }}">{{ log.prompt[:30] }}{% if log.prompt|length > 30 %}...{% endif %}</td>
+                        <td>
+                            <span class="status-indicator {% if log.result == 'Safe' %}safe{% else %}blocked{% endif %}">
+                                {{ log.result }}
+                            </span>
+                        </td>
+                        <td class="log-layer">{{ log.layer }}</td>
+                    </tr>
+                    {% else %}
+                    <tr id="emptyLogsRow">
+                        <td colspan="4" class="text-center">No logs found yet.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Initialize chart
+    document.addEventListener('DOMContentLoaded', function() {
+        const ctx = document.getElementById('statsChart').getContext('2d');
+        const safeCount = {{ safe_count }};
+        const blockedCount = {{ blocked_count }};
+        
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Safe', 'Blocked'],
+                datasets: [{
+                    data: [safeCount, blockedCount],
+                    backgroundColor: [
+                        'rgba(46, 213, 115, 0.8)',
+                        'rgba(255, 71, 87, 0.8)'
+                    ],
+                    borderColor: [
+                        '#1e272e',
+                        '#1e272e'
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: {
+                            color: '#d2dae2'
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
+{% endblock %}

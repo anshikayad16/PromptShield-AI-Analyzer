@@ -1,0 +1,102 @@
+body {
+    width: 320px;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0f172a;
+    color: #f8fafc;
+}
+
+.header {
+    background-color: #1e293b;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.shield-icon {
+    width: 20px;
+    height: 20px;
+    color: #3b82f6;
+}
+
+.content {
+    padding: 16px;
+}
+
+textarea {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    padding: 8px;
+    border-radius: 6px;
+    resize: none;
+    font-family: inherit;
+    margin-bottom: 12px;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.btn:hover {
+    background-color: #2563eb;
+}
+
+.btn:disabled {
+    background-color: #64748b;
+    cursor: not-allowed;
+}
+
+.hidden {
+    display: none;
+}
+
+#resultArea {
+    margin-top: 16px;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+#resultArea.safe {
+    background-color: rgba(16, 185, 129, 0.1);
+    border-color: rgba(16, 185, 129, 0.4);
+}
+
+#resultArea.blocked {
+    background-color: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.4);
+}
+
+#statusBadge {
+    margin: 0 0 8px 0;
+}
+
+.safe #statusBadge { color: #10b981; }
+.blocked #statusBadge { color: #ef4444; }
+
+#reasonText {
+    margin: 0;
+    font-size: 13px;
+    color: #94a3b8;
+}

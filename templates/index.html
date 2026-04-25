@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="hero">
+    <div class="hero-content">
+        <h1>Secure AI Interactions</h1>
+        <p class="hero-subtitle">Advanced Prompt Injection Protection Layer</p>
+        <p class="hero-text">Our hybrid 3-layer detection pipeline secures your LLM infrastructure in real-time, thwarting signature, heuristic, and zero-day anomaly attacks.</p>
+        <div class="hero-actions">
+            <a href="{{ url_for('register') }}" class="btn btn-primary btn-large">Get Started Now</a>
+            <a href="{{ url_for('login') }}" class="btn btn-outline btn-large">Login to Dashboard</a>
+        </div>
+    </div>
+    <div class="hero-graphic">
+        <div class="abstract-shape shape-1"></div>
+        <div class="abstract-shape shape-2"></div>
+        <div class="shield-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+        </div>
+    </div>
+</div>
+
+<div class="features-grid">
+    <div class="feature-card">
+        <div class="feature-icon">🛡️</div>
+        <h3>Signature Detection</h3>
+        <p>Instant blocking of known jailbreaks, payloads, and static injection snippets.</p>
+    </div>
+    <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Heuristic Scoring</h3>
+        <p>Dynamic assessment of prompt structure, encoding attempts, and suspicious length anomalies.</p>
+    </div>
+    <div class="feature-card">
+        <div class="feature-icon">🧠</div>
+        <h3>Machine Learning</h3>
+        <p>Behaviour-based NLP model categorizing unseen contextual anomalies for comprehensive defense.</p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,50 @@
+.shield-ai-btn {
+    position: absolute;
+    z-index: 99999;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.shield-ai-btn:hover {
+    background: #2563eb;
+}
+.shield-ai-btn.analyzing {
+    background: #64748b;
+    pointer-events: none;
+}
+.shield-ai-btn.safe {
+    background: #10b981;
+}
+.shield-ai-btn.blocked {
+    background: #ef4444;
+}
+.shield-ai-toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    border-radius: 6px;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    z-index: 999999;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+.shield-ai-toast.show {
+    opacity: 1;
+}
+.shield-ai-toast.safe { background: #10b981; }
+.shield-ai-toast.blocked { background: #ef4444; }

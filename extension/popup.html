@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="header">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="shield-icon">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+        ShieldAI Analyzer
+    </div>
+    <div class="content">
+        <textarea id="promptInput" rows="4" placeholder="Enter prompt to check..."></textarea>
+        <button id="analyzeBtn" class="btn">Analyze Prompt</button>
+        
+        <div id="resultArea" class="hidden">
+            <h4 id="statusBadge"></h4>
+            <p id="reasonText"></p>
+        </div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>
